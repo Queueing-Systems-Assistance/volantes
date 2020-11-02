@@ -1,0 +1,34 @@
+{
+  "name": "volantes",
+  "version": "1.0.0",
+  "description": "Deployment application for QSA",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "lint": "eslint src/**/*.js"
+  },
+  "author": "QSA",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.4.1",
+    "dotenv": "^8.2.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6",
+    "eslint": "^7.11.0"
+  },
+  "nodemonConfig": {
+    "ext": "js,env",
+    "quiet": true,
+    "watch": [
+      "src",
+      ".env"
+    ]
+  },
+  "eslintConfig": {
+    "ignorePatterns": [
+      "node_modules"
+    ]
+  }
+}

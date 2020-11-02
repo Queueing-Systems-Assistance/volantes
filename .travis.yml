@@ -1,0 +1,30 @@
+notifications:
+  email:
+    on_success: always
+    on_failure: always
+
+os: linux
+sudo: required
+language: node_js
+
+node_js:
+  - "14"
+
+git:
+  depth: false
+
+before_install:
+  - chmod +x ./support/pipeline/pipeline-setup.sh
+  - chmod +x ./support/pipeline/pipeline-build.sh
+  - chmod +x ./support/pipeline/pipeline-deploy.sh
+install:
+  - ./support/pipeline/pipeline-setup.sh
+script:
+  - ./support/pipeline/pipeline-build.sh
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: ./support/pipeline/pipeline-deploy.sh
+  on:
+    branch: master
