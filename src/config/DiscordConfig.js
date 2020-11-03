@@ -25,7 +25,10 @@ const configureEvents = client => {
 }
 
 module.exports = {
-	setUp: () => {
+	/**
+	 * Discord configuration.
+	 */
+	setUp() {
 		const client = new Discord.Client()
 		configureCommands(client)
 		configureAuthentication(client)

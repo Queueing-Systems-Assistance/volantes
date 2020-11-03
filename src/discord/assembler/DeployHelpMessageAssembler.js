@@ -22,6 +22,11 @@ const SUPPORTED_ENVIRONMENTS_FIELD = 'Supported Environments'
 const SUPPORTED_APPLICATIONS_FIELD = 'Supported Applications'
 
 module.exports = {
+	/**
+	 * Assembles deploy embed message for Discord.
+	 * @param {string} userId id of the message author
+	 * @returns {MessageEmbed} embed message for discord
+	 */
 	assemble(userId) {
 		return new Discord.MessageEmbed()
 			.setColor(ColorResolver.GRAY)

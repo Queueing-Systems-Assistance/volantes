@@ -15,7 +15,11 @@ const executeCommand = (message, args) => {
 }
 
 const commandHandler = {
-	handle: (message) => {
+	/**
+	 * Handle messages from Discord.
+	 * @param {Message} message message from Discord
+	 */
+	handle(message) {
 		if (isBotMessage(message)) {
 			return
 		}

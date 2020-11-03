@@ -18,11 +18,16 @@ const executeCommand = (message, context) => {
 
 module.exports = {
 	name: COMMAND_NAME_DEPLOY,
+	/**
+	 * Executes deploy command.
+	 * @param {Message} message message from Discord
+	 * @param {string[]} args message arguments
+	 */
 	execute(message, args) {
 		const context = DeployContextResolver.resolve(args)
-		if (!ArgumentValidator.validate(context)) {
-			return message.channel.send(DeployHelpMessageAssembler.assemble(message.author.id))
+		if (ArgumentValidator.validate(context)) {
+			executeCommand(message, context)
 		}
-		executeCommand(message, context)
+		message.channel.send(DeployHelpMessageAssembler.assemble(message.author.id))
 	}
 }

@@ -5,6 +5,11 @@ const MESSAGE_TITLE_DEPLOY = 'Deploy Update'
 const MESSAGE_DESCRIPTION = 'The deploy of `{0}` to `{1}` is running :rocket:'
 
 module.exports = {
+	/**
+	 * Assembles an update embed message for discord.
+	 * @param {DeployContext} context deploy context
+	 * @returns {MessageEmbed} embed message for discord
+	 */
 	assemble(context) {
 		return new Discord.MessageEmbed()
 			.setColor(ColorResolver.YELLOW)
