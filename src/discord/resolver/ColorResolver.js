@@ -1,0 +1,6 @@
+module.exports = {
+	GREEN: 0x0DD628,
+	RED: 0xFC0320,
+	YELLOW: 0xD6C50D,
+	GRAY: 0x636363
+}

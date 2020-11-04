@@ -64,15 +64,32 @@ const logger = winston.createLogger({
 })
 
 module.exports = (filename) => ({
+	/**
+	 * Log with DEBUG level.
+	 * @param {string} message Log message
+	 */
 	debug(message) {
 		logger.debug(message, { caller: formatCaller(filename) })
 	},
+	/**
+	 * Log with INFO level.
+	 * @param {string} message Log message
+	 */
 	info(message) {
 		logger.info(message, { caller: formatCaller(filename) })
 	},
+	/**
+	 * Log with WARN level.
+	 * @param {string} message Log message
+	 */
 	warn(message) {
 		logger.warn(message, { caller: formatCaller(filename) })
 	},
+	/**
+	 * Log with ERROR level.
+	 * @param {string} message Log message
+	 * @param {Error} exception error object
+	 */
 	error(message, exception) {
 		logger.error(message, { caller: formatCaller(filename), exception })
 	}

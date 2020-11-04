@@ -1,47 +1,149 @@
 {
-	"extends": "eslint:recommended",
-	"env": {
-		"node": true,
-		"es6": true
-	},
-	"parserOptions": {
-		"ecmaVersion": 2019
-	},
-	"rules": {
-		"brace-style": ["error", "1tbs", { "allowSingleLine": false }],
-		"comma-dangle": ["error", "never"],
-		"comma-spacing": "error",
-		"comma-style": "error",
-		"curly": ["error", "multi-line", "consistent"],
-		"dot-location": ["error", "property"],
-		"handle-callback-err": "off",
-		"indent": ["error", "tab"],
-		"max-nested-callbacks": ["error", { "max": 4 }],
-		"max-statements-per-line": ["error", { "max": 2 }],
-		"no-console": "off",
-		"no-empty-function": "error",
-		"no-floating-decimal": "error",
-		"no-inline-comments": "error",
-		"no-lonely-if": "error",
-		"no-multi-spaces": "error",
-		"no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 1, "maxBOF": 0 }],
-		"no-shadow": ["error", { "allow": ["err", "resolve", "reject"] }],
-		"no-trailing-spaces": ["error"],
-		"no-var": "error",
-		"object-curly-spacing": ["error", "always"],
-		"prefer-const": "error",
-		"quotes": ["error", "single", { "allowTemplateLiterals":  false}],
-		"semi": ["error", "never"],
-		"space-before-blocks": "error",
-		"space-before-function-paren": ["error", {
-			"anonymous": "never",
-			"named": "never",
-			"asyncArrow": "always"
-		}],
-		"space-in-parens": "error",
-		"space-infix-ops": "error",
-		"space-unary-ops": "error",
-		"spaced-comment": "error",
-		"yoda": "error"
-	}
+  "extends": [
+    "eslint:recommended"
+  ],
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "plugins": [
+    "jsdoc"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2019
+  },
+  "rules": {
+    "brace-style": [
+      "error",
+      "1tbs",
+      {
+        "allowSingleLine": false
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "comma-spacing": "error",
+    "comma-style": "error",
+    "curly": [
+      "error",
+      "multi-line",
+      "consistent"
+    ],
+    "dot-location": [
+      "error",
+      "property"
+    ],
+    "handle-callback-err": "off",
+    "indent": [
+      "error",
+      "tab"
+    ],
+    "max-nested-callbacks": [
+      "error",
+      {
+        "max": 4
+      }
+    ],
+    "max-statements-per-line": [
+      "error",
+      {
+        "max": 2
+      }
+    ],
+    "no-console": "off",
+    "no-empty-function": "error",
+    "no-floating-decimal": "error",
+    "no-inline-comments": "error",
+    "no-lonely-if": "error",
+    "no-multi-spaces": "error",
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 2,
+        "maxEOF": 1,
+        "maxBOF": 0
+      }
+    ],
+    "no-shadow": [
+      "error",
+      {
+        "allow": [
+          "err",
+          "resolve",
+          "reject"
+        ]
+      }
+    ],
+    "no-trailing-spaces": [
+      "error"
+    ],
+    "no-var": "error",
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "prefer-const": "error",
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": false
+      }
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "space-before-blocks": "error",
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "never",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "space-in-parens": "error",
+    "space-infix-ops": "error",
+    "space-unary-ops": "error",
+    "spaced-comment": "error",
+    "yoda": "error",
+    "eol-last": ["error", "always"],
+    // JSDOC
+    "jsdoc/require-jsdoc": [
+      "error",
+      {
+        "publicOnly": true,
+        "require": {
+          "ClassDeclaration": true,
+          "FunctionExpression": true
+        }
+      }
+    ],
+    "jsdoc/check-alignment": 1,
+    "jsdoc/check-param-names": 1,
+    "jsdoc/check-tag-names": 1,
+    "jsdoc/check-types": 1,
+    "jsdoc/check-values": 1,
+    "jsdoc/empty-tags": 1,
+    "jsdoc/implements-on-classes": 1,
+    "jsdoc/match-description": 1,
+    "jsdoc/newline-after-description": [
+      1,
+      "never"
+    ],
+    "jsdoc/no-undefined-types": 0,
+    "jsdoc/require-description": 1,
+    "jsdoc/require-param": 1,
+    "jsdoc/require-param-description": 1,
+    "jsdoc/require-param-name": 1,
+    "jsdoc/require-param-type": 1,
+    "jsdoc/require-returns": 1,
+    "jsdoc/require-returns-check": 1,
+    "jsdoc/require-returns-description": 1,
+    "jsdoc/require-returns-type": 1,
+    "jsdoc/valid-types": 1
+  }
 }
