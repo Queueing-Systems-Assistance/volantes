@@ -1,6 +1,6 @@
 const GitHubResponseValidator = require('../validator/GitHubResponseValidator')
 
-const JIRA_KEY_REGEX = /^CHK-[0-9]+/
+const JIRA_KEY_REGEX = /^QSA-[0-9]+/
 const FIRST_PULL_REQUEST = 0
 const ERROR_NO_JIRA_KEY_FOUND = 'No JIRA key found, commit message [{0}]'
 const ERROR_NO_COMMIT_MESSAGE_FOUND = 'No commit message found'
