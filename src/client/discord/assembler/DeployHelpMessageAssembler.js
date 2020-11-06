@@ -6,14 +6,16 @@ const USAGE_MESSAGE = `
 Hey <@{0}>
 This command can deploy an app to an environment. Make sure your artifact has been successfully built first :face_with_monocle:
 Usage:
-\`volantes deploy ENVIRONMENT APP\`
+\`volantes deploy ENVIRONMENT APP VERSION\`
 
 Example: 
 # Deploy calculator to lab environment
-\`volantes deploy lab calculator\`
+\`volantes deploy lab calculator 1.0.feature/QSA-12_28\`
 
 # Deploy formula-handler to prod environment
-\`volantes deploy prod formula-handler\``
+\`volantes deploy prod formula-handler 1.0.43\`
+
+__**You can deploy feature branches to only LAB environment(s)**__`
 
 const NEW_LINE_DELIMITER = '\n'
 const SUPPORTED_APPLICATIONS = process.env.DEPLOY_APPLICATIONS.split(COMMA_DELIMITER)
