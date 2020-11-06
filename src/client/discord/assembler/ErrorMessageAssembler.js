@@ -9,12 +9,10 @@ A \`{0}\` deployment to \`{1}\` has failed. View logs for more clues.
 
 {2}`
 
-function createResponse(context, errorMessage) {
-	return new Discord.MessageEmbed()
-		.setColor(ColorResolver.RED)
-		.setTitle(MESSAGE_TITLE_DEPLOY)
-		.setDescription(MESSAGE_DESCRIPTION.format(context.application, context.environment, errorMessage))
-}
+const createResponse = (context, errorMessage) => new Discord.MessageEmbed()
+	.setColor(ColorResolver.RED)
+	.setTitle(MESSAGE_TITLE_DEPLOY)
+	.setDescription(MESSAGE_DESCRIPTION.format(context.application, context.environment, errorMessage))
 
 module.exports = {
 	/**

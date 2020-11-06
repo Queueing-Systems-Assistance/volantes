@@ -4,12 +4,10 @@ const ColorResolver = require('../resolver/ColorResolver')
 const MESSAGE_TITLE_DEPLOY = 'Deploy Triggered'
 const MESSAGE_DESCRIPTION = 'Hey <@{0}>, your deploy of `{1}` to `{2}` has been triggered.'
 
-function createResponse(userId, context) {
-	return new Discord.MessageEmbed()
-		.setColor(ColorResolver.YELLOW)
-		.setTitle(MESSAGE_TITLE_DEPLOY)
-		.setDescription(MESSAGE_DESCRIPTION.format(userId, context.application, context.environment))
-}
+const createResponse = (userId, context) => new Discord.MessageEmbed()
+	.setColor(ColorResolver.YELLOW)
+	.setTitle(MESSAGE_TITLE_DEPLOY)
+	.setDescription(MESSAGE_DESCRIPTION.format(userId, context.application, context.environment))
 
 module.exports = {
 	/**
