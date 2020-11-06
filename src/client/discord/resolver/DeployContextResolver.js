@@ -1,4 +1,4 @@
-const { DeployContext } = require('../../domain/DeployContext')
+const { DeployContext } = require('../../../domain/DeployContext')
 
 module.exports = {
 	/**
@@ -9,9 +9,11 @@ module.exports = {
 	resolve(args) {
 		const environmentArgument = args.shift()
 		const applicationArgument = args.shift()
-		return DeployContext.Builder()
-			.withApplication(environmentArgument)
-			.withEnvironment(applicationArgument)
+		const versionArgument = args.shift()
+		return new DeployContext.Builder()
+			.withApplication(applicationArgument)
+			.withEnvironment(environmentArgument)
+			.withVersion(versionArgument)
 			.build()
 	}
 }

@@ -1,4 +1,4 @@
-const logger = require('../../config/LoggingConfig')(__filename)
+const logger = require('../../../config/LoggingConfig')(__filename)
 
 const COMMAND_ENTRY = 'volantes'
 const COMMAND_ARGS_SPLITTER = / +/

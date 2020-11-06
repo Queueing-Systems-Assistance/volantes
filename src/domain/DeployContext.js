@@ -3,6 +3,7 @@ class DeployContext {
 	constructor(builder) {
 		this.application = builder.application
 		this.environment = builder.environment
+		this.version = builder.version
 	}
 
 	static get Builder() {
@@ -15,6 +16,11 @@ class DeployContext {
 
 			withEnvironment(environment) {
 				this.environment = environment
+				return this
+			}
+
+			withVersion(version) {
+				this.version = version
 				return this
 			}
 
