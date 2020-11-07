@@ -15,7 +15,7 @@ Example:
 # Deploy formula-handler to prod environment
 \`volantes deploy prod formula-handler 1.0.43\`
 
-__**You can deploy feature branches to only LAB environment(s)**__`
+You can deploy __**feature branch**__ to __**LAB**__ environment and __**config pack**__ to __**PROD**__ environment`
 
 const NEW_LINE_DELIMITER = '\n'
 const SUPPORTED_APPLICATIONS = process.env.DEPLOY_APPLICATIONS.split(COMMA_DELIMITER)
