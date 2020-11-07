@@ -2,12 +2,14 @@ const ApplicationContextValidator = require('./ApplicationContextValidator')
 const EnvironmentContextValidator = require('./EnvironmentContextValidator')
 const VersionContextValidator = require('./VersionContextValidator')
 const ProdDeploymentContextValidator = require('./ProdDeploymentContextValidator')
+const ConfigPackDeploymentContextValidator = require('./ConfigPackDeploymentContextValidator')
 
 const validators = [
 	ApplicationContextValidator,
 	EnvironmentContextValidator,
 	VersionContextValidator,
-	ProdDeploymentContextValidator
+	ProdDeploymentContextValidator,
+	ConfigPackDeploymentContextValidator
 ]
 
 module.exports = {
