@@ -1,16 +1,19 @@
 const Discord = require('discord.js')
 const logger = require('./LoggingConfig')(__filename)
-const fs = require('fs')
 const MessageCommandHandler = require('../client/discord/command/CommandHandler')
 
 const FAILED_TO_LOGIN_ERROR = 'Error occurred while logging in'
 const EVENT_MESSAGE_ARRIVED = 'message'
-const COMMANDS_DIRECTORY_ABSOLUTE_PATH = './src/client/discord/command'
 const COMMANDS_DIRECTORY_RELATIVE_PATH = '../client/discord/command/{0}'
+
+const DISCORD_COMMANDS = [
+	'CommandHandler',
+	'DeployCommand'
+]
 
 const configureCommands = client => {
 	client.commands = new Discord.Collection()
-	fs.readdirSync(COMMANDS_DIRECTORY_ABSOLUTE_PATH).forEach(file => {
+	DISCORD_COMMANDS.forEach(file => {
 		const command = require(COMMANDS_DIRECTORY_RELATIVE_PATH.format(file))
 		client.commands.set(command.name, command)
 	})
