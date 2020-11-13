@@ -24,7 +24,6 @@ const commandHandler = {
 			logger.warn(ERROR_MESSAGE_SOURCE_NOT_PERMITTED)
 			return
 		}
-		console.log(JSON.stringify(message.channel))
 		logger.info(COMMAND_EXECUTED.format(message.author.username, message.content))
 		const args = getMessageArguments(message)
 		executeCommand(message, args)
