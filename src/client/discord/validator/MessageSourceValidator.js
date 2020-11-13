@@ -1,9 +1,10 @@
 const logger = require('../../../config/LoggingConfig')(__filename)
 
+const getGuildId = message => message.channel.guild === undefined ? '' : message.channel.guild.id
 const isBotMessage = message => message.author.bot
 const isDirectMessage = message => message.channel.type === 'dm'
 const isMessageFromCorrectChannel = message => message.channel.id === process.env.DISCORD_CHANNEL_ID
-const isMessageFromCorrectServer = message => message.channel.guild.id === process.env.DISCORD_SERVER_ID
+const isMessageFromCorrectServer = message => getGuildId(message) === process.env.DISCORD_SERVER_ID
 const isDevelopmentProfile = () => process.env.APP_PROFILE === 'development'
 
 const ERROR_MESSAGE_SOURCE_NOT_PERMITTED = 'Message is not from the correct source! [DM={0}] [CID={1}] [SID={2}]'
