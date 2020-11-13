@@ -4,7 +4,6 @@ const MessageSourceValidator = require('../validator/MessageSourceValidator')
 const COMMAND_ENTRY = 'volantes'
 const COMMAND_ARGS_SPLITTER = / +/
 const COMMAND_EXECUTED = 'Command executed from [{0}] with content [{1}]'
-const ERROR_MESSAGE_SOURCE_NOT_PERMITTED = 'Message is not from the correct source!'
 
 const getMessageArguments = message => message.content.slice(COMMAND_ENTRY.length).trim().split(COMMAND_ARGS_SPLITTER)
 const executeCommand = (message, args) => {
@@ -21,7 +20,6 @@ const commandHandler = {
 	 */
 	handle(message) {
 		if (!MessageSourceValidator.validate(message)) {
-			logger.warn(ERROR_MESSAGE_SOURCE_NOT_PERMITTED)
 			return
 		}
 		logger.info(COMMAND_EXECUTED.format(message.author.username, message.content))
