@@ -2,7 +2,7 @@ class GitResponse {
 
 	constructor(builder) {
 		this.jiraKey = builder.jiraKey
-		this.message = builder.environment
+		this.message = builder.message
 	}
 
 	static get Builder() {

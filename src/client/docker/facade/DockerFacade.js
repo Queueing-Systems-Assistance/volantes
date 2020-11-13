@@ -1,5 +1,5 @@
 const ContainerNameAssembler = require('../assembler/ContainerNameAssembler')
-const ContainerImageResolver = require('../resolver/ContainerImageResolver')
+const ContainerImageAssembler = require('../assembler/ContainerImageAssembler')
 const ContainerOptionsAssembler = require('../assembler/ContainerOptionsAssembler')
 const DockerGateway = require('../gateway/DockerGateway')
 const logger = require('../../../config/LoggingConfig')(__filename)
@@ -12,7 +12,7 @@ module.exports = {
 	 * @param {DeployContext} context context
 	 */
 	async update(context) {
-		const imageName = ContainerImageResolver.resolve(context)
+		const imageName = ContainerImageAssembler.assemble(context)
 		const containerName = ContainerNameAssembler.assemble(context)
 		const containerOptions = ContainerOptionsAssembler.assemble(context)
 		await DockerGateway.pullDockerContainer(imageName)

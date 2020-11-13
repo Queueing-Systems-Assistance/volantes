@@ -10,21 +10,20 @@ language: node_js
 node_js:
   - "14"
 
+cache: npm
 git:
   depth: false
 
-before_install:
-  - chmod +x ./support/pipeline/pipeline-setup.sh
-  - chmod +x ./support/pipeline/pipeline-build.sh
-  - chmod +x ./support/pipeline/pipeline-deploy.sh
-install:
-  - ./support/pipeline/pipeline-setup.sh
-script:
-  - ./support/pipeline/pipeline-build.sh
+env:
+  PROJECT_MAJOR_VERSION=1
+  PROJECT_MINOR_VERSION=0
 
-deploy:
-  skip_cleanup: true
-  provider: script
-  script: ./support/pipeline/pipeline-deploy.sh
-  on:
-    branch: master
+branches:
+  only:
+    - /^feature\/QSA-[0-9]+/
+    - master
+
+before_install:
+  - chmod +x ./support/pipeline/pipeline.sh
+script:
+  - ./support/pipeline/pipeline.sh

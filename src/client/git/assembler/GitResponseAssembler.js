@@ -11,5 +11,6 @@ module.exports = {
 		return new GitResponse.Builder()
 			.withMessage(GitCommitMessageResolver.resolveCommitMessage(response))
 			.withJiraKey(GitCommitMessageResolver.resolveJiraKey(response))
+			.build()
 	}
 }

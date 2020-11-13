@@ -9,15 +9,12 @@ const ERROR_DOCKER_PULL_IMAGE_MESSAGE = 'Cannot pull image with DockerAPI, respo
 const ERROR_DOCKER_CREATE_CONTAINER_MESSAGE = 'Cannot create container with DockerAPI, response code [{0}], message [{1}]'
 const ERROR_DOCKER_START_CONTAINER_MESSAGE = 'Cannot start container with DockerAPI, response code [{0}]'
 
-const RESPONSE_STATUSES_OK = [200, 201, 204]
-
 const DOCKER_HOST_CONTAINER_STOP = process.env.DOCKER_HOST + process.env.DOCKER_ENDPOINT_CONTAINER_STOP
 const DOCKER_HOST_CONTAINER_START = process.env.DOCKER_HOST + process.env.DOCKER_ENDPOINT_CONTAINER_START
 const DOCKER_HOST_CONTAINER_REMOVE = process.env.DOCKER_HOST + process.env.DOCKER_ENDPOINT_CONTAINER_REMOVE
 const DOCKER_HOST_PULL_IMAGE = process.env.DOCKER_HOST + process.env.DOCKER_ENDPOINT_PULL_IMAGE
 const DOCKER_HOST_CONTAINER_CREATE = process.env.DOCKER_HOST + process.env.DOCKER_ENDPOINT_CONTAINER_CREATE
 
-const isResponseStatusOK = (response) => RESPONSE_STATUSES_OK.includes(response)
 const getResponse = (endpoint, options) => fetch(endpoint, options)
 
 const STOPPING_CONTAINER_LOG_MESSAGE = 'Stopping container [{0}]'
@@ -35,7 +32,7 @@ module.exports = {
 		logger.info(STOPPING_CONTAINER_LOG_MESSAGE.format(containerName))
 		const options = { method: 'post' }
 		const response = await getResponse(DOCKER_HOST_CONTAINER_STOP.format(containerName), options)
-		if (!isResponseStatusOK(response)) {
+		if (!response.ok) {
 			throw ERROR_DOCKER_STOP_CONTAINER_MESSAGE.format(response.status)
 		}
 	},
@@ -47,7 +44,7 @@ module.exports = {
 		logger.info(STARTING_CONTAINER_LOG_MESSAGE.format(containerName))
 		const options = { method: 'post' }
 		const response = await getResponse(DOCKER_HOST_CONTAINER_START.format(containerName), options)
-		if (!isResponseStatusOK(response)) {
+		if (!response.ok) {
 			throw ERROR_DOCKER_START_CONTAINER_MESSAGE.format(response.status)
 		}
 	},
@@ -59,7 +56,7 @@ module.exports = {
 		logger.info(REMOVING_CONTAINER_LOG_MESSAGE.format(containerName))
 		const options = { method: 'delete' }
 		const response = await getResponse(DOCKER_HOST_CONTAINER_REMOVE.format(containerName), options)
-		if (!isResponseStatusOK(response)) {
+		if (!response.ok) {
 			throw ERROR_DOCKER_REMOVE_CONTAINER_MESSAGE.format(response.status)
 		}
 	},
@@ -75,7 +72,7 @@ module.exports = {
 		}
 		const endpoint = DockerParameterMapper.mapDockerPullImageParameters(DOCKER_HOST_PULL_IMAGE, imageName)
 		const response = await getResponse(endpoint, options)
-		if (!isResponseStatusOK(response)) {
+		if (!response.ok) {
 			throw ERROR_DOCKER_PULL_IMAGE_MESSAGE.format(response.status, JSON.stringify(await response.json()))
 		}
 	},
@@ -93,7 +90,7 @@ module.exports = {
 		}
 		const endpoint = DockerParameterMapper.mapDockerCreateContainerParameters(DOCKER_HOST_CONTAINER_CREATE, containerName)
 		const response = await getResponse(endpoint, options)
-		if (!isResponseStatusOK(response)) {
+		if (!response.ok) {
 			throw ERROR_DOCKER_CREATE_CONTAINER_MESSAGE.format(response.status, JSON.stringify(await response.json()))
 		}
 	}

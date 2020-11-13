@@ -2,8 +2,8 @@ const GitHubResponseValidator = require('../validator/GitHubResponseValidator')
 
 const JIRA_KEY_REGEX = /^QSA-[0-9]+/
 const FIRST_PULL_REQUEST = 0
-const ERROR_NO_JIRA_KEY_FOUND = 'No JIRA key found, commit message [{0}]'
-const ERROR_NO_COMMIT_MESSAGE_FOUND = 'No commit message found'
+const ERROR_NO_JIRA_KEY_FOUND = 'No JIRA key found, commit message OR pull request title [{0}]'
+const ERROR_NO_COMMIT_MESSAGE_FOUND = 'No commit message after JIRA key found, commit message OR pull request title [{0}]'
 const MERGE_COMMIT_MESSAGE = 'Merge pull request'
 
 const hasPullRequests = response => response.data.repository.object.associatedPullRequests.totalCount
@@ -41,6 +41,10 @@ module.exports = {
 	 */
 	resolveCommitMessage(response) {
 		const commitMessage = resolveCommitMessageFromResponse(response)
-		return commitMessage.split(JIRA_KEY_REGEX).pop().trim()
+		const message = commitMessage.split(JIRA_KEY_REGEX).pop().trim()
+		if (!message) {
+			throw ERROR_NO_COMMIT_MESSAGE_FOUND.format(commitMessage)
+		}
+		return message
 	}
 }
