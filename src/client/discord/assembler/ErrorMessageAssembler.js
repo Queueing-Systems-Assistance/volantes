@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const ColorResolver = require('../resolver/ColorResolver')
+const VolantesVersionResolver = require('../resolver/VolantesVersionResolver')
 
 const MESSAGE_TITLE_DEPLOY = 'Deploy Failed'
 const MESSAGE_DESCRIPTION = `
@@ -13,6 +14,7 @@ const createResponse = (context, errorMessage) => new Discord.MessageEmbed()
 	.setColor(ColorResolver.RED)
 	.setTitle(MESSAGE_TITLE_DEPLOY)
 	.setDescription(MESSAGE_DESCRIPTION.format(context.application, context.environment, errorMessage))
+	.setFooter(VolantesVersionResolver.resolve())
 
 module.exports = {
 	/**
