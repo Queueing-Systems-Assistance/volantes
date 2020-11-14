@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const ColorResolver = require('../resolver/ColorResolver')
+const VolantesVersionResolver = require('../resolver/VolantesVersionResolver')
 
 const COMMA_DELIMITER = ','
 const USAGE_MESSAGE = `
@@ -35,5 +36,6 @@ module.exports = {
 			.setDescription(USAGE_MESSAGE.format(userId))
 			.addField(SUPPORTED_ENVIRONMENTS_FIELD, SUPPORTED_ENVIRONMENTS.join(NEW_LINE_DELIMITER))
 			.addField(SUPPORTED_APPLICATIONS_FIELD, SUPPORTED_APPLICATIONS.join(NEW_LINE_DELIMITER))
+			.setFooter(VolantesVersionResolver.resolve())
 	}
 }
