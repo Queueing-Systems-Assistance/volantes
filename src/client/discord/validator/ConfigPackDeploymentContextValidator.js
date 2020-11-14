@@ -5,7 +5,7 @@ const ERROR_CONFIG_PACK_DEPLOYMENT = 'Validation error, config packs can be depl
 const CONFIG_PACK_FILTER = 'config-pack'
 
 const isProductionDeployment = environment => environment === ENVIRONMENT_PROD
-const isConfigPack = application => application.includes(CONFIG_PACK_FILTER)
+const isConfigPack = application => String(application).includes(CONFIG_PACK_FILTER)
 
 module.exports = {
 	/**
