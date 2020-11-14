@@ -1,5 +1,6 @@
 const winston = require('winston')
 const path = require('path')
+const { LogstashTransport } = require('winston-logstash-transport')
 
 const LOG_FILE_NAME = 'volantes.log'
 const LOG_DIRECTORY_NAME = 'logs'
@@ -13,7 +14,7 @@ const LINE_FORMAT = '{0} {1} {2} - {3} {4}'
 const LOGGING_CONFIG_MIN_LEVEL = process.env.LOGGING_CONFIG_MIN_LEVEL || 'debug'
 const LOGGING_FORMAT = process.env.LOGGING_FORMAT || 'json'
 const LOGGING_TRANSPORT = process.env.LOGGING_TRANSPORT || 'console'
-const APP_VERSION = process.env.npm_package_version
+const RELEASE_VERSION = process.env.RELEASE_VERSION
 
 const FORMATTER = winston.format
 const formatCaller = (callerFileName) => path.basename(callerFileName)
@@ -29,11 +30,14 @@ const lineFormat = FORMATTER.printf((log) => {
 const jsonFormat = FORMATTER.printf((info) => JSON.stringify({
 	timestamp: info.timestamp,
 	level: formatLevel(info.level),
+	application: process.env.APP_NAME,
 	caller: formatCaller(info.caller),
-	buildVersion: APP_VERSION,
+	buildVersion: RELEASE_VERSION,
 	message: info.message,
 	stackTrace: formatStackTrace(info.stack)
 }))
+
+const logstashTransport = new LogstashTransport({ host: process.env.LOGGING_HOST, port: process.env.LOGGING_PORT })
 
 const fileTransport = new winston.transports.File({
 	dirname: LOG_DIRECTORY_NAME,
@@ -48,7 +52,8 @@ const formatters = {
 
 const transports = {
 	console: consoleTransport,
-	file: fileTransport
+	file: fileTransport,
+	logstash: logstashTransport
 }
 
 const logger = winston.createLogger({
