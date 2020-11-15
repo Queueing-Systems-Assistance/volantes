@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
-const ColorResolver = require('../resolver/ColorResolver')
-const GitCommitFetchFacade = require('../../git/facade/GitCommitFetchFacade')
+const ColorResolver = require('../../resolver/ColorResolver')
+const GitCommitFetchFacade = require('../../../git/facade/GitCommitFetchFacade')
 
 const MESSAGE_TITLE_DEPLOY = 'Deploy Update'
 const MESSAGE_DESCRIPTION = 'The deploy of `{0}` to `{1}` is running :rocket:'

@@ -8,7 +8,8 @@ const COMMANDS_DIRECTORY_RELATIVE_PATH = '../client/discord/command/{0}'
 
 const DISCORD_COMMANDS = [
 	'CommandHandler',
-	'DeployCommand'
+	'DeployCommand',
+	'VersionCommand'
 ]
 
 const configureCommands = client => {

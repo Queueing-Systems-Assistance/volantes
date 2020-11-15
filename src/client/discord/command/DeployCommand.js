@@ -1,5 +1,5 @@
 const DeployFacade = require('../facade/DeployFacade')
-const DeployHelpMessageAssembler = require('../assembler/DeployHelpMessageAssembler')
+const DeployHelpMessageAssembler = require('../assembler/deploy/DeployHelpMessageAssembler')
 const ContextValidator = require('../validator/CompositeContextValidator')
 const DeployContextResolver = require('../resolver/DeployContextResolver')
 

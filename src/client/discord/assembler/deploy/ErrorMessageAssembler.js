@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const ColorResolver = require('../resolver/ColorResolver')
+const ColorResolver = require('../../resolver/ColorResolver')
 
 const MESSAGE_TITLE_DEPLOY = 'Deploy Failed'
 const MESSAGE_DESCRIPTION = `

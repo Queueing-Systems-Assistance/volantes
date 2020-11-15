@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const ColorResolver = require('../resolver/ColorResolver')
+const ColorResolver = require('../../resolver/ColorResolver')
 
 const COMMA_DELIMITER = ','
 const USAGE_MESSAGE = `

@@ -1,7 +1,7 @@
-const ErrorEmbedMessageAssembler = require('../assembler/ErrorMessageAssembler')
-const UpdateEmbedMessageAssembler = require('../assembler/UpdateMessageAssembler')
-const CompletedEmbedMessageAssembler = require('../assembler/CompletedMessageAssembler')
-const TriggeredEmbedMessageAssembler = require('../assembler/TriggeredMessageAssembler')
+const ErrorEmbedMessageAssembler = require('../assembler/deploy/ErrorMessageAssembler')
+const UpdateEmbedMessageAssembler = require('../assembler/deploy/UpdateMessageAssembler')
+const CompletedEmbedMessageAssembler = require('../assembler/deploy/CompletedMessageAssembler')
+const TriggeredEmbedMessageAssembler = require('../assembler/deploy/TriggeredMessageAssembler')
 const DockerFacade = require('../../../client/docker/facade/DockerFacade')
 
 module.exports = {

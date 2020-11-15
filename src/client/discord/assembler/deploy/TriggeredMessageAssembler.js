@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const ColorResolver = require('../resolver/ColorResolver')
+const ColorResolver = require('../../resolver/ColorResolver')
 
 const MESSAGE_TITLE_DEPLOY = 'Deploy Triggered'
 const MESSAGE_DESCRIPTION = 'Hey <@{0}>, your deploy of `{1}` to `{2}` has been triggered.'
