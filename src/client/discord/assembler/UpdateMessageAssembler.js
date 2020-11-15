@@ -1,7 +1,6 @@
 const Discord = require('discord.js')
 const ColorResolver = require('../resolver/ColorResolver')
 const GitCommitFetchFacade = require('../../git/facade/GitCommitFetchFacade')
-const VolantesVersionResolver = require('../resolver/VolantesVersionResolver')
 
 const MESSAGE_TITLE_DEPLOY = 'Deploy Update'
 const MESSAGE_DESCRIPTION = 'The deploy of `{0}` to `{1}` is running :rocket:'
@@ -13,7 +12,6 @@ const createResponse = (gitResponse, context) => new Discord.MessageEmbed()
 	.addField('Version', context.version, true)
 	.addField('JIRA', gitResponse.jiraKey, true)
 	.setDescription(MESSAGE_DESCRIPTION.format(context.application, context.environment))
-	.setFooter(VolantesVersionResolver.resolve())
 
 module.exports = {
 	/**
